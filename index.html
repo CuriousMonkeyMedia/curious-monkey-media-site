@@ -7,8 +7,6 @@
 <style id="cmm-mobile">
   /* Phones and small tablets: layout adapts; desktop is untouched. */
   #cmm-menu-btn { display: none; }
-  header, main, footer { transition: opacity .7s ease; }
-  html.cmm-lang-open header, html.cmm-lang-open main, html.cmm-lang-open footer { opacity: 0 !important; pointer-events: none; }
   header > div > button img { height: 56px !important; }
   footer img[src*="lockup"] { height: 56px !important; }
   @media (max-width: 760px) {
@@ -81,7 +79,6 @@
   }
 </style>
 <script>
-  document.documentElement.classList.add('cmm-lang-open');
   (function () {
     function init() {
       if (document.getElementById('cmm-menu-btn')) return;
@@ -105,9 +102,7 @@
       // Hide the menu button while the language picker is showing
       function checkPicker() {
         var picker = document.querySelector('[data-no-i18n][style*="position:fixed"], [data-no-i18n][style*="position: fixed"]');
-        var intro = document.querySelector('[data-intro]');
-        var introOn = !!intro && intro.style.opacity !== '0';
-        document.documentElement.classList.toggle('cmm-lang-open', !!picker || introOn);
+        document.documentElement.classList.toggle('cmm-lang-open', !!picker);
       }
       checkPicker();
       setInterval(checkPicker, 150);
@@ -210,13 +205,13 @@
   </div>
   </sc-if>
 
-  <div data-intro="" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:90;background:radial-gradient(ellipse at 50% 50%,rgba(11,11,11,0.78) 0%,rgba(11,11,11,0.5) 45%,rgba(11,11,11,0.3) 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;pointer-events:none;transition:opacity .6s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .6s ease">
+  <div data-intro="" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:90;background:#0B0B0B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;pointer-events:none;transition:opacity .6s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .6s ease">
     <img src="assets/lockup.png" alt="" style="width:min(340px,62vw);height:auto;display:block;animation:cmm-intro-in .8s cubic-bezier(.2,.8,.3,1) both">
     <div style="width:min(180px,34vw);height:1px;background:#D9A81C;transform-origin:left center;animation:cmm-intro-bar .8s cubic-bezier(.4,0,.2,1) .25s both"></div>
   </div>
 
   <sc-if value="{{ askLang }}" hint-placeholder-val="{{ false }}">
-  <div data-no-i18n="" style="position:fixed;inset:0;z-index:90;background:rgba(11,11,11,0.35);backdrop-filter:blur(1px);-webkit-backdrop-filter:blur(2px);display:flex;align-items:center;justify-content:center;padding:28px">
+  <div data-no-i18n="" style="position:fixed;inset:0;z-index:90;background:rgba(11,11,11,0.94);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:28px">
     <div style="max-width:420px;width:100%;border:1px solid #1C1A16;border-radius:6px;background:#100F0B;padding:32px 28px;text-align:center">
       <img src="assets/lockup.png" alt="Curious Monkey Media" style="height:38px;width:auto;display:block;margin:0 auto 22px">
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:4px">
