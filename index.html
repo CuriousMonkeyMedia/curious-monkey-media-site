@@ -8,12 +8,14 @@
   /* Phones and small tablets: layout adapts; desktop is untouched. */
   #cmm-menu-btn { display: none; }
   header > div > button img { height: 56px !important; }
+  footer img[src*="lockup"] { height: 56px !important; }
   @media (max-width: 760px) {
     html { -webkit-text-size-adjust: 100%; }
 
     /* Header: logo + menu button on one row, links in a drop-down */
     header > div { flex-wrap: nowrap !important; padding: 10px 16px !important; padding-right: 64px !important; min-height: 44px; }
     header > div > button img { height: 46px !important; }
+    footer img[src*="lockup"] { height: 46px !important; }
     header nav { display: none !important; }
     html.cmm-menu-open header nav {
       display: flex !important; position: absolute; top: 100%; left: 0; right: 0;
