@@ -72,6 +72,7 @@
     [data-screen-label="Work"] a[data-slide] { padding: 18px 16px !important; }
 
     /* Process + contact cards */
+    [data-step-row] { grid-template-columns: minmax(0,1fr) 96px !important; gap: 14px !important; }
     [data-screen-label="Process"] [style*="minmax(240px,1fr)"], [data-screen-label="Process"] [style*="minmax(240px, 1fr)"] { grid-template-columns: 1fr !important; }
     [data-screen-label="Contact"] section, main section[style*="minmax(280px,1fr)"], main section[style*="minmax(280px, 1fr)"] { grid-template-columns: 1fr !important; }
 
@@ -360,30 +361,50 @@
         <div data-slide="" style="position:relative;padding-left:52px;padding-bottom:34px">
           <span aria-hidden="true" style="position:absolute;left:11px;top:5px;width:18px;height:18px;border-radius:50%;border:1px solid #D9A81C;background:#0B0B0B;display:block"></span>
           <span aria-hidden="true" style="position:absolute;left:16px;top:10px;width:8px;height:8px;border-radius:50%;background:#D9A81C;display:block"></span>
-          <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">01 · WEEK 0</div>
-          <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Understand</div>
-          <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">A focused conversation about your business, goals and challenges, followed by a review of your website, social media and online presence.</p>
+          <div data-step-row="" style="display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:28px;align-items:start">
+            <div style="min-width:0">
+            <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">01 · WEEK 0</div>
+            <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Understand</div>
+            <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">A focused conversation about your business, goals and challenges, followed by a review of your website, social media and online presence.</p>
+            </div>
+            <div data-step-video="" style="border:1px solid #2A2621;border-radius:10px;overflow:hidden;background:#141310;aspect-ratio:9/16;box-shadow:0 14px 30px rgba(0,0,0,0.4)"><video src="assets/adi-03.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+          </div>
         </div>
         <div data-slide="" style="position:relative;padding-left:52px;padding-bottom:34px">
           <span aria-hidden="true" style="position:absolute;left:11px;top:5px;width:18px;height:18px;border-radius:50%;border:1px solid #D9A81C;background:#0B0B0B;display:block"></span>
           <span aria-hidden="true" style="position:absolute;left:16px;top:10px;width:8px;height:8px;border-radius:50%;background:#D9A81C;display:block"></span>
-          <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">02 · WEEK 1</div>
-          <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Plan</div>
-          <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">Priorities are set and a practical plan is built around the services that will move the business furthest, fastest.</p>
+          <div data-step-row="" style="display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:28px;align-items:start">
+            <div style="min-width:0">
+            <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">02 · WEEK 1</div>
+            <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Plan</div>
+            <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">Priorities are set and a practical plan is built around the services that will move the business furthest, fastest.</p>
+            </div>
+            <div data-step-video="" style="border:1px solid #2A2621;border-radius:10px;overflow:hidden;background:#141310;aspect-ratio:9/16;box-shadow:0 14px 30px rgba(0,0,0,0.4)"><video src="assets/pg-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+          </div>
         </div>
         <div data-slide="" style="position:relative;padding-left:52px;padding-bottom:34px">
           <span aria-hidden="true" style="position:absolute;left:11px;top:5px;width:18px;height:18px;border-radius:50%;border:1px solid #D9A81C;background:#0B0B0B;display:block"></span>
           <span aria-hidden="true" style="position:absolute;left:16px;top:10px;width:8px;height:8px;border-radius:50%;background:#D9A81C;display:block"></span>
-          <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">03 · WEEKS 2–3</div>
-          <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Launch</div>
-          <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">Content, pages and campaigns go live, with everything set up properly rather than rushed out the door.</p>
+          <div data-step-row="" style="display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:28px;align-items:start">
+            <div style="min-width:0">
+            <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">03 · WEEKS 2–3</div>
+            <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Launch</div>
+            <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">Content, pages and campaigns go live, with everything set up properly rather than rushed out the door.</p>
+            </div>
+            <div data-step-video="" style="border:1px solid #2A2621;border-radius:10px;overflow:hidden;background:#141310;aspect-ratio:9/16;box-shadow:0 14px 30px rgba(0,0,0,0.4)"><video src="assets/adi-02.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+          </div>
         </div>
         <div data-slide="" style="position:relative;padding-left:52px;padding-bottom:0">
           <span aria-hidden="true" style="position:absolute;left:11px;top:5px;width:18px;height:18px;border-radius:50%;border:1px solid #D9A81C;background:#0B0B0B;display:block"></span>
           <span aria-hidden="true" style="position:absolute;left:16px;top:10px;width:8px;height:8px;border-radius:50%;background:#D9A81C;display:block"></span>
-          <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">04 · WEEK 4 ONWARD</div>
-          <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Improve</div>
-          <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">We review what the results show, keep what works, adjust what does not and plan the following month together.</p>
+          <div data-step-row="" style="display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:28px;align-items:start">
+            <div style="min-width:0">
+            <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.14em;color:#8E887B">04 · WEEK 4 ONWARD</div>
+            <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;margin-top:6px">Improve</div>
+            <p style="margin:8px 0 0;color:#B9B4A8;font-size:16px;line-height:1.62;max-width:56ch;text-wrap:pretty">We review what the results show, keep what works, adjust what does not and plan the following month together.</p>
+            </div>
+            <div data-step-video="" style="border:1px solid #2A2621;border-radius:10px;overflow:hidden;background:#141310;aspect-ratio:9/16;box-shadow:0 14px 30px rgba(0,0,0,0.4)"><video src="assets/adi-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:cover;display:block"></video></div>
+          </div>
         </div>
         </div>
       </div>
