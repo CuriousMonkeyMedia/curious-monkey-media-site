@@ -81,7 +81,7 @@
   }
 </style>
 <script>
-  try { if (!localStorage.getItem('cmm-lang')) document.documentElement.classList.add('cmm-lang-open'); } catch (e) {}
+  document.documentElement.classList.add('cmm-lang-open');
   (function () {
     function init() {
       if (document.getElementById('cmm-menu-btn')) return;
@@ -105,7 +105,9 @@
       // Hide the menu button while the language picker is showing
       function checkPicker() {
         var picker = document.querySelector('[data-no-i18n][style*="position:fixed"], [data-no-i18n][style*="position: fixed"]');
-        document.documentElement.classList.toggle('cmm-lang-open', !!picker);
+        var intro = document.querySelector('[data-intro]');
+        var introOn = !!intro && intro.style.opacity !== '0';
+        document.documentElement.classList.toggle('cmm-lang-open', !!picker || introOn);
       }
       checkPicker();
       setInterval(checkPicker, 150);
