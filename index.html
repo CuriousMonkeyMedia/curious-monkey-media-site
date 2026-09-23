@@ -202,13 +202,13 @@
       <video src="assets/adi-10.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
       <video src="assets/pg-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
     </div>
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(11,11,11,0.2) 0%,rgba(11,11,11,0.4) 60%,rgba(11,11,11,0.72) 96%)"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(11,11,11,0.05) 0%,rgba(11,11,11,0.15) 60%,rgba(11,11,11,0.45) 96%)"></div>
   </div>
   </sc-if>
 
   <div data-intro="" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:90;background:#0B0B0B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;pointer-events:none;transition:opacity .6s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .6s ease">
-    <img src="assets/lockup.png" alt="" style="width:min(340px,62vw);height:auto;display:block;animation:cmm-intro-in .8s cubic-bezier(.2,.8,.3,1) both">
-    <div style="width:min(180px,34vw);height:1px;background:#D9A81C;transform-origin:left center;animation:cmm-intro-bar .8s cubic-bezier(.4,0,.2,1) .25s both"></div>
+    <img src="assets/lockup.png" alt="" style="width:min(580px,84vw);height:auto;display:block;animation:cmm-intro-in .8s cubic-bezier(.2,.8,.3,1) both">
+    <div style="width:min(300px,52vw);height:2px;background:#D9A81C;transform-origin:left center;animation:cmm-intro-bar .8s cubic-bezier(.4,0,.2,1) .25s both"></div>
   </div>
 
   <sc-if value="{{ askLang }}" hint-placeholder-val="{{ false }}">
@@ -415,7 +415,7 @@
   <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
   <div data-screen-label="About">
     <section style="max-width:640px;margin:0 auto;padding:clamp(44px,5vw,76px) clamp(22px,6vw,34px) clamp(48px,6vw,84px);position:relative">
-      <div aria-hidden="true" style="position:absolute;left:-22vw;right:-22vw;top:-60px;bottom:-60px;background:linear-gradient(90deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.85) 16%,rgba(11,11,11,0.88) 50%,rgba(11,11,11,0.85) 84%,rgba(11,11,11,0) 100%);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(2px);pointer-events:none"></div>
+      <div aria-hidden="true" style="position:absolute;left:-22vw;right:-22vw;top:-60px;bottom:-60px;background:linear-gradient(90deg,rgba(11,11,11,0) 0%,rgba(11,11,11,0.62) 22%,rgba(11,11,11,0.7) 50%,rgba(11,11,11,0.62) 78%,rgba(11,11,11,0) 100%);backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);pointer-events:none"></div>
       <div style="position:relative;z-index:1;max-width:100%">
       <div  style="position:relative;opacity:1;transition:opacity .45s ease,transform .45s ease">
         <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.14em;text-transform:uppercase;color:#8E887B">About</div>
@@ -906,7 +906,7 @@ class Component extends DCLogic {
     window.addEventListener("touchmove", this.dismissIntro, { passive: true });
     window.addEventListener("keydown", this.dismissIntro);
     window.addEventListener("scroll", this.dismissIntro, { passive: true });
-    this.introAuto = setTimeout(this.dismissIntro, 1400);
+    this.introAuto = setTimeout(this.dismissIntro, 3400);
   }
 
   componentWillUnmount() {
@@ -1082,7 +1082,7 @@ class Component extends DCLogic {
       frFg: this.state.lang === "fr" ? "#0B0B0B" : "#B9B4A8",
       pickEn: () => this.setLang("en"),
       pickFr: () => this.setLang("fr"),
-      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 0.87)),
+      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 1)),
       showBg: this.props.showBackdrop !== false && (p === "about" || p === "home"),
       nav: this.pages.map(t => ({
         label: t.label,
