@@ -135,6 +135,9 @@
     -webkit-mask-image: url(assets/lockup-hd.png); mask-image: url(assets/lockup-hd.png);
     -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
     animation: cmm-shine 1.2s ease-in-out .9s infinite alternate; }
+  .cmm-seg-bar { width: 100%; box-sizing: border-box; display: flex; gap: clamp(6px,1.9vw,20px); padding: clamp(8px,1.4vw,14px) clamp(12px,2.2vw,24px); background: #1A1917; border: 1px solid #3A3630; border-radius: 18px; box-shadow: inset 0 2px 6px rgba(0,0,0,0.6); }
+  .cmm-seg-bar i { flex: 1; height: clamp(30px,5.2vw,60px); border-radius: 5px; background: #2E2B27; transition: background .25s ease, box-shadow .25s ease; }
+  .cmm-seg-bar i.on { background: linear-gradient(180deg,#FFE08A 0%,#D9A81C 100%); box-shadow: 0 0 10px rgba(217,168,28,0.75); }
   @keyframes cmm-intro-grow { from { transform: scale(1); } to { transform: scale(1.05); } }
   @keyframes cmm-intro-out { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
   @keyframes cmm-wipe { 0% { clip-path: inset(0 100% 0 0); } 38% { clip-path: inset(0 0 0 0); } 58% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 0 100%); } }
@@ -220,7 +223,7 @@
   <div data-intro="" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:90;background:#0B0B0B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;pointer-events:none;transition:opacity .6s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .6s ease">
     <div style="animation:cmm-intro-grow 5.6s ease-out both"><div class="cmm-logo-wrap"><img src="assets/lockup-hd.png" alt="" style="width:min(1120px,90vw);height:auto;display:block;animation:cmm-intro-in .9s cubic-bezier(.2,.8,.3,1) both"><div class="cmm-logo-shine"></div></div></div>
     <div style="width:min(700px,84vw);display:flex;flex-direction:column;align-items:center;gap:14px">
-      <div style="width:100%;height:9px;background:#2A2723;border-radius:9px;overflow:hidden"><div data-intro-fill="" style="width:0%;height:100%;background:#D9A81C;border-radius:6px;box-shadow:0 0 16px rgba(217,168,28,0.8)"></div></div>
+      <div class="cmm-seg-bar" data-intro-segs=""><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
       <div data-intro-pct="" data-no-i18n="" style="font-family:Outfit,sans-serif;font-weight:700;font-size:clamp(36px,8vw,60px);color:#D9A81C;letter-spacing:0.04em">0%</div>
     </div>
   </div>
@@ -918,7 +921,7 @@ class Component extends DCLogic {
       window.removeEventListener("keydown", this.dismissIntro);
       window.removeEventListener("scroll", this.dismissIntro);
     };
-    const fill = el.querySelector("[data-intro-fill]");
+    const segs = el.querySelectorAll("[data-intro-segs] i");
     const pct = el.querySelector("[data-intro-pct]");
     const dur = 5200, t0 = performance.now();
     const tick = (now) => {
@@ -926,7 +929,7 @@ class Component extends DCLogic {
       const t = Math.min(1, (now - t0) / dur);
       const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
       const v = Math.round(e * 100);
-      if (fill) fill.style.width = v + "%";
+      segs.forEach((sg, k) => sg.classList.toggle("on", (k + 1) * (100 / segs.length) <= v + 0.01));
       if (pct) pct.textContent = v + "%";
       if (t < 1) requestAnimationFrame(tick);
     };
