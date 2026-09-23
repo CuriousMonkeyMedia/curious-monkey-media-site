@@ -807,7 +807,7 @@ class Component extends DCLogic {
     this.mo.observe(this.root, { childList: true, subtree: true });
     let saved = null;
     try { saved = window.localStorage.getItem("cmm-lang"); } catch (e) {}
-    this.setState({ lang: saved || "en", askLang: !saved });
+    this.setState({ lang: saved || ((navigator.language || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en"), askLang: false });
     this.ticker = setInterval(() => this.sweep(), 700);
     this.bgRows = Array.prototype.slice.call(this.root.querySelectorAll("[data-bgrow]"));
     const kick = () => this.root.querySelectorAll("[data-backdrop] video").forEach(v => { v.muted = true; v.volume = 0; v.defaultMuted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); });
