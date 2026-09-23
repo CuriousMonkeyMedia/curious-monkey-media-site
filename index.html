@@ -1137,7 +1137,7 @@ class Component extends DCLogic {
       frFg: this.state.lang === "fr" ? "#0B0B0B" : "#B9B4A8",
       pickEn: () => this.setLang("en"),
       pickFr: () => this.setLang("fr"),
-      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 1)),
+      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 0.87)),
       showBg: this.props.showBackdrop !== false && (p === "about" || p === "home"),
       nav: this.pages.map(t => ({
         label: t.label,
