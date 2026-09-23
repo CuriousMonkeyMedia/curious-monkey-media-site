@@ -126,7 +126,7 @@
   @keyframes cmm-intro-in { from { opacity: 0; transform: scale(0.92); } to { opacity: 1; transform: scale(1); } }
   @keyframes cmm-intro-bar { from { transform: scaleX(0); } to { transform: scaleX(1); } }
   @keyframes cmm-intro-glow { 0%,100% { filter: drop-shadow(0 0 18px rgba(217,168,28,0.25)); } 50% { filter: drop-shadow(0 0 46px rgba(217,168,28,0.7)); } }
-  @keyframes cmm-intro-grow { from { transform: scale(1); } to { transform: scale(1.08); } }
+  @keyframes cmm-intro-grow { from { transform: scale(1); } to { transform: scale(1.05); } }
   @keyframes cmm-intro-out { from { opacity: 1; } to { opacity: 0; visibility: hidden; } }
   @keyframes cmm-wipe { 0% { clip-path: inset(0 100% 0 0); } 38% { clip-path: inset(0 0 0 0); } 58% { clip-path: inset(0 0 0 0); } 100% { clip-path: inset(0 0 0 100%); } }
   @keyframes cmm-rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
@@ -209,10 +209,10 @@
   </sc-if>
 
   <div data-intro="" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:90;background:#0B0B0B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;pointer-events:none;transition:opacity .6s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .6s ease">
-    <div style="animation:cmm-intro-grow 5.6s ease-out both"><img src="assets/lockup.png" alt="" style="width:min(860px,86vw);height:auto;display:block;animation:cmm-intro-in .9s cubic-bezier(.2,.8,.3,1) both,cmm-intro-glow 2.2s ease-in-out .9s infinite"></div>
-    <div style="width:min(520px,80vw);display:flex;flex-direction:column;align-items:center;gap:14px">
-      <div style="width:100%;height:6px;background:#2A2723;border-radius:6px;overflow:hidden"><div data-intro-fill="" style="width:0%;height:100%;background:#D9A81C;border-radius:6px;box-shadow:0 0 16px rgba(217,168,28,0.8)"></div></div>
-      <div data-intro-pct="" data-no-i18n="" style="font-family:Outfit,sans-serif;font-weight:700;font-size:clamp(28px,6vw,44px);color:#D9A81C;letter-spacing:0.04em">0%</div>
+    <div style="animation:cmm-intro-grow 5.6s ease-out both"><img src="assets/lockup.png" alt="" style="width:min(1120px,90vw);height:auto;display:block;animation:cmm-intro-in .9s cubic-bezier(.2,.8,.3,1) both,cmm-intro-glow 2.2s ease-in-out .9s infinite"></div>
+    <div style="width:min(700px,84vw);display:flex;flex-direction:column;align-items:center;gap:14px">
+      <div style="width:100%;height:9px;background:#2A2723;border-radius:9px;overflow:hidden"><div data-intro-fill="" style="width:0%;height:100%;background:#D9A81C;border-radius:6px;box-shadow:0 0 16px rgba(217,168,28,0.8)"></div></div>
+      <div data-intro-pct="" data-no-i18n="" style="font-family:Outfit,sans-serif;font-weight:700;font-size:clamp(36px,8vw,60px);color:#D9A81C;letter-spacing:0.04em">0%</div>
     </div>
   </div>
 
