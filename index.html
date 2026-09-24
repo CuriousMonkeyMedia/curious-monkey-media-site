@@ -100,6 +100,26 @@
 
     footer, footer > div { padding-left: 18px !important; padding-right: 18px !important; }
   }
+
+  /* Linktree business-card peek-out */
+  #cmm-card { position: fixed; right: 0; top: 52%; z-index: 70; display: flex; align-items: center; transform: translate(calc(100% - 40px), -50%); transition: transform .45s cubic-bezier(.2,.8,.2,1); font-family: 'Archivo', sans-serif; }
+  #cmm-card.open { transform: translate(0, -50%); }
+  #cmm-card-tab { all: unset; cursor: pointer; width: 40px; padding: 14px 0; background: #D9A81C; color: #0B0B0B; border-radius: 12px 0 0 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: -6px 8px 22px rgba(0,0,0,.45); }
+  #cmm-card-tab img { width: 26px; height: 26px; border-radius: 6px; display: block; }
+  #cmm-card-tab span { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 700; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
+  #cmm-card-body { width: min(320px, 80vw); box-sizing: border-box; background: linear-gradient(160deg,#26241F 0%,#171614 100%); border: 1px solid #D9A81C; border-right: 0; border-radius: 0; padding: 22px 20px 20px; color: #F2F0EB; box-shadow: -10px 14px 34px rgba(0,0,0,.55); position: relative; }
+  #cmm-card-body .cc-top { display: flex; align-items: center; gap: 12px; }
+  #cmm-card-body .cc-top img { width: 52px; height: 52px; border-radius: 12px; border: 1px solid #3A3630; }
+  #cmm-card-body .cc-name { font-family: 'Outfit','Archivo',sans-serif; font-weight: 700; font-size: 18px; line-height: 1.15; color: #D9A81C; }
+  #cmm-card-body .cc-sub { font-size: 12.5px; color: #B9B4A8; margin-top: 3px; }
+  #cmm-card-body .cc-rule { height: 1px; background: #3A3630; margin: 16px 0 14px; }
+  #cmm-card-body .cc-mail { display: block; font-size: 13.5px; color: #F2F0EB; text-decoration: none; margin-bottom: 14px; }
+  #cmm-card-body .cc-mail:hover { color: #D9A81C; }
+  #cmm-card-body .cc-btn { display: flex; justify-content: center; align-items: center; gap: 8px; background: #D9A81C; color: #0B0B0B; font-weight: 700; font-size: 14.5px; padding: 12px 14px; border-radius: 4px; text-decoration: none; }
+  #cmm-card-body .cc-btn:hover { background: #E8BC3A; color: #0B0B0B; }
+  #cmm-card-x { all: unset; cursor: pointer; position: absolute; top: 8px; right: 10px; color: #8E887B; font-size: 18px; line-height: 1; padding: 4px; }
+  html.cmm-menu-open #cmm-card { display: none; }
+  @media (max-width: 760px) { #cmm-card { top: 62%; transform: translate(calc(100% - 34px), -50%); } #cmm-card.open { transform: translate(0, -50%); } #cmm-card-tab { width: 34px; padding: 10px 0; gap: 8px; } #cmm-card-tab img { width: 22px; height: 22px; } #cmm-card-tab span { font-size: 10.5px; } }
 </style>
 <script>
   (function () {
@@ -129,6 +149,30 @@
       }
       checkPicker();
       setInterval(checkPicker, 150);
+      // Linktree business-card peek-out
+      var LT = 'https://linktr.ee/curiousmonkeymedia';
+      var card = document.createElement('div');
+      card.id = 'cmm-card';
+      card.innerHTML = '<button type="button" id="cmm-card-tab" aria-label="Linktree"><img src="assets/apple-touch-icon.png" alt=""><span data-en="Our links" data-fr="Nos liens">Our links</span></button>' +
+        '<div id="cmm-card-body"><button type="button" id="cmm-card-x" aria-label="Close">×</button>' +
+        '<div class="cc-top"><img src="assets/apple-touch-icon.png" alt="Curious Monkey Media"><div><div class="cc-name">Curious Monkey Media</div><div class="cc-sub" data-en="Digital marketing · Montreal" data-fr="Marketing numérique · Montréal">Digital marketing · Montreal</div></div></div>' +
+        '<div class="cc-rule"></div>' +
+        '<a class="cc-mail" href="mailto:hello@curious-monkeymedia.ca">hello@curious-monkeymedia.ca</a>' +
+        '<a class="cc-btn" href="' + LT + '" target="_blank" rel="noopener"><span data-en="All our links on Linktree" data-fr="Tous nos liens sur Linktree">All our links on Linktree</span> <span>→</span></a></div>';
+      document.body.appendChild(card);
+      var hoverable = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+      function setOpen(v) { card.classList.toggle('open', v); }
+      card.querySelector('#cmm-card-tab').addEventListener('click', function (e) { e.stopPropagation(); setOpen(!card.classList.contains('open')); });
+      card.querySelector('#cmm-card-x').addEventListener('click', function (e) { e.stopPropagation(); setOpen(false); });
+      if (hoverable) { card.addEventListener('mouseenter', function () { setOpen(true); }); card.addEventListener('mouseleave', function () { setOpen(false); }); }
+      document.addEventListener('click', function (e) { if (!card.contains(e.target)) setOpen(false); });
+      // Peek out once after the intro so visitors notice it
+      setTimeout(function () { setOpen(true); setTimeout(function () { if (!card.matches(':hover')) setOpen(false); }, 3200); }, 7200);
+      function cardLang() {
+        var l = 'en'; try { l = window.localStorage.getItem('cmm-lang') || l; } catch (e) {}
+        card.querySelectorAll('[data-en]').forEach(function (n) { var t = n.getAttribute('data-' + (l === 'fr' ? 'fr' : 'en')); if (n.textContent !== t) n.textContent = t; });
+      }
+      cardLang(); setInterval(cardLang, 500);
     }
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
   })();
