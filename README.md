@@ -1,4 +1,16 @@
-# Curious Monkey Media: website
+# Curious Monkey Media
+
+**Visit the website: [curious-monkeymedia.ca](https://curious-monkeymedia.ca)**
+
+Curious Monkey Media is a Montreal and West Island digital marketing agency founded by Daniel Yoskovitch. SEO, website design, content creation and Meta ads, in English and French.
+
+- Website: https://curious-monkeymedia.ca
+- All links: https://linktr.ee/curiousmonkeymedia
+- Email: hello@curious-monkeymedia.ca
+
+---
+
+## About this repository
 
 This folder is the whole site, ready to publish. You don't need a build step. Open `index.html` through any static web host and it works.
 
