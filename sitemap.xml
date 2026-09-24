@@ -2,30 +2,54 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://curious-monkeymedia.ca/</loc>
-    <lastmod>2026-09-25</lastmod>
-  </url>
-  <url>
-    <loc>https://curious-monkeymedia.ca/seo-montreal/</loc>
-    <lastmod>2026-09-25</lastmod>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/seo-montreal/"/>
-    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/agence-seo-montreal/"/>
-  </url>
-  <url>
-    <loc>https://curious-monkeymedia.ca/agence-seo-montreal/</loc>
-    <lastmod>2026-09-25</lastmod>
-    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/seo-montreal/"/>
-    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/agence-seo-montreal/"/>
+    <lastmod>2026-09-24</lastmod>
   </url>
   <url>
     <loc>https://curious-monkeymedia.ca/social-media-marketing-montreal/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/social-media-marketing-montreal/"/>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/agence-medias-sociaux-montreal/"/>
   </url>
   <url>
     <loc>https://curious-monkeymedia.ca/agence-medias-sociaux-montreal/</loc>
-    <lastmod>2026-09-25</lastmod>
+    <lastmod>2026-09-24</lastmod>
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/social-media-marketing-montreal/"/>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/agence-medias-sociaux-montreal/"/>
+  </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/web-design-montreal/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/web-design-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/creation-site-web-montreal/"/>
+  </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/creation-site-web-montreal/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/web-design-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/creation-site-web-montreal/"/>
+  </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/content-creation-montreal/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/content-creation-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/creation-de-contenu-montreal/"/>
+  </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/creation-de-contenu-montreal/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/content-creation-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/creation-de-contenu-montreal/"/>
+  </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/seo-montreal/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/seo-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/agence-seo-montreal/"/>
+  </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/agence-seo-montreal/</loc>
+    <lastmod>2026-09-24</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/seo-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/agence-seo-montreal/"/>
   </url>
 </urlset>
