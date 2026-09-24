@@ -107,7 +107,7 @@
   #cmm-card-tab { all: unset; cursor: pointer; width: 40px; padding: 14px 0; background: #D9A81C; color: #0B0B0B; border-radius: 12px 0 0 12px; display: flex; flex-direction: column; align-items: center; gap: 10px; box-shadow: -6px 8px 22px rgba(0,0,0,.45); }
   #cmm-card-tab img { width: 26px; height: 26px; border-radius: 6px; display: block; }
   #cmm-card-tab span { writing-mode: vertical-rl; transform: rotate(180deg); font-weight: 700; font-size: 12px; letter-spacing: .18em; text-transform: uppercase; }
-  #cmm-card-body { width: min(270px, 74vw); box-sizing: border-box; background: linear-gradient(160deg,#26241F 0%,#171614 100%); border: 1px solid #D9A81C; border-right: 0; border-left: 0; border-radius: 0; padding: 14px; display: flex; flex-direction: column; justify-content: center; color: #F2F0EB; box-shadow: -10px 14px 34px rgba(0,0,0,.55); position: relative; }
+  #cmm-card-body { width: min(280px, 76vw); box-sizing: border-box; background: radial-gradient(120% 90% at 0% 0%, rgba(217,168,28,.16) 0%, rgba(217,168,28,0) 55%), linear-gradient(160deg,#26241F 0%,#141311 100%); border: 1px solid #D9A81C; border-right: 0; border-left: 0; border-radius: 0; padding: 16px 16px 16px 14px; display: flex; flex-direction: column; justify-content: center; color: #F2F0EB; box-shadow: -10px 14px 34px rgba(0,0,0,.55); position: relative; }
   #cmm-card-body .cc-top { display: flex; align-items: center; gap: 12px; }
   #cmm-card-body .cc-top img { width: 52px; height: 52px; border-radius: 12px; border: 1px solid #3A3630; }
   #cmm-card-body .cc-name { font-family: 'Outfit','Archivo',sans-serif; font-weight: 700; font-size: 18px; line-height: 1.15; color: #D9A81C; }
@@ -118,6 +118,18 @@
   #cmm-card-body .cc-btn { display: flex; justify-content: center; align-items: center; gap: 8px; background: #D9A81C; color: #0B0B0B; font-weight: 700; font-size: 14.5px; padding: 12px 14px; border-radius: 4px; text-decoration: none; }
   #cmm-card-body .cc-btn:hover { background: #E8BC3A; color: #0B0B0B; }
   #cmm-card-x { all: unset; cursor: pointer; position: absolute; top: 8px; right: 10px; color: #8E887B; font-size: 18px; line-height: 1; padding: 4px; }
+  #cmm-card-body { gap: 12px; }
+  #cmm-card-body .cc-head { display: flex; align-items: center; gap: 11px; }
+  #cmm-card-body .cc-ico { width: 40px; height: 40px; flex: 0 0 40px; border-radius: 11px; display: flex; align-items: center; justify-content: center; color: #0B0B0B; background: linear-gradient(145deg,#F2D468,#D9A81C); box-shadow: 0 0 16px rgba(217,168,28,.45); }
+  #cmm-card-body .cc-kicker { font-family: 'DM Mono', monospace; font-size: 10px; letter-spacing: .16em; color: #D9A81C; }
+  #cmm-card-body .cc-title { font-family: 'Outfit','Archivo',sans-serif; font-weight: 700; font-size: 16px; line-height: 1.2; color: #F2F0EB; margin-top: 2px; }
+  #cmm-card-body .cc-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  #cmm-card-body .cc-chips span { font-size: 11px; color: #D8D3C7; border: 1px solid #3A3630; background: rgba(255,255,255,.03); border-radius: 999px; padding: 4px 10px; }
+  #cmm-card-body .cc-btn { position: relative; overflow: hidden; border-radius: 999px; }
+  #cmm-card-body .cc-btn::after { content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; background: linear-gradient(100deg, transparent, rgba(255,255,255,.55), transparent); animation: cc-shine 2.8s ease-in-out infinite; }
+  #cmm-card-body .cc-btn:hover .cc-arrow { transform: translateX(3px); }
+  #cmm-card-body .cc-arrow { transition: transform .2s ease; display: inline-block; }
+  @keyframes cc-shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
   html.cmm-menu-open #cmm-card { display: none; }
   @media (max-width: 760px) { #cmm-card { top: 62%; transform: translate(calc(100% - 34px), -50%); } #cmm-card.open { transform: translate(0, -50%); } #cmm-card-tab { width: 34px; padding: 10px 0; gap: 8px; } #cmm-card-tab img { width: 22px; height: 22px; } #cmm-card-tab span { font-size: 10.5px; } }
 </style>
@@ -155,7 +167,9 @@
       card.id = 'cmm-card';
       card.innerHTML = '<button type="button" id="cmm-card-tab" aria-label="Linktree"><img src="assets/apple-touch-icon.png" alt=""><span data-en="Our links" data-fr="Nos liens">Our links</span></button>' +
         '<div id="cmm-card-body">' +
-        '<a class="cc-btn" href="' + LT + '" target="_blank" rel="noopener"><span data-en="All our links on Linktree" data-fr="Tous nos liens sur Linktree">All our links on Linktree</span> <span>→</span></a></div>';
+        '<div class="cc-head"><span class="cc-ico"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.07 0l3-3a5 5 0 0 0-7.07-7.07l-1.5 1.5"/><path d="M14 11a5 5 0 0 0-7.07 0l-3 3a5 5 0 0 0 7.07 7.07l1.5-1.5"/></svg></span><div><div class="cc-kicker">LINKTREE</div><div class="cc-title" data-en="All our links in one place" data-fr="Tous nos liens au même endroit">All our links in one place</div></div></div>' +
+        '<div class="cc-chips"><span data-en="Instagram" data-fr="Instagram">Instagram</span><span data-en="Website" data-fr="Site web">Website</span><span data-en="Contact" data-fr="Contact">Contact</span></div>' +
+        '<a class="cc-btn" href="' + LT + '" target="_blank" rel="noopener"><span data-en="Open Linktree" data-fr="Ouvrir Linktree">Open Linktree</span> <span class="cc-arrow">→</span></a></div>';
       document.body.appendChild(card);
       var hoverable = window.matchMedia && window.matchMedia('(hover: hover)').matches;
       function setOpen(v) { card.classList.toggle('open', v); }
