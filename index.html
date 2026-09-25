@@ -778,7 +778,7 @@
   </footer>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showBackdrop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;backdropIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.72,&quot;min&quot;:0.05,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;showBackdrop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;backdropIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.5,&quot;min&quot;:0.05,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
 class Component extends DCLogic {
   state = { page: "about", open: -1, sent: false, picked: [], cycle: 0, svc: 0, lang: null, askLang: false };
 
@@ -1163,7 +1163,7 @@ class Component extends DCLogic {
       frFg: this.state.lang === "fr" ? "#0B0B0B" : "#B9B4A8",
       pickEn: () => this.setLang("en"),
       pickFr: () => this.setLang("fr"),
-      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 0.72)),
+      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 0.5)),
       showBg: this.props.showBackdrop !== false && (p === "about" || p === "home"),
       nav: this.pages.map(t => ({
         label: t.label,
