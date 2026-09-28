@@ -10,6 +10,25 @@
   gtag('config', 'G-35EX51PM4P');
 </script>
 <meta charset="utf-8">
+<style id="cmm-loading-css">
+  /* While the intro loader shows: solid black screen, nothing else visible */
+  html.cmm-loading, html.cmm-loading body { background: #0B0B0B !important; }
+  html.cmm-loading body * { visibility: hidden !important; }
+  html.cmm-loading [data-intro], html.cmm-loading [data-intro] * { visibility: visible !important; }
+</style>
+<script>
+(function(){
+  var d=document.documentElement; d.classList.add('cmm-loading');
+  var t0=Date.now();
+  function done(){ d.classList.remove('cmm-loading'); clearInterval(iv); }
+  var iv=setInterval(function(){
+    var el=document.querySelector('[data-intro]'), t=Date.now()-t0;
+    if(el){ if(el.style.opacity==='0'||el.style.visibility==='hidden') done(); }
+    else if(t>3000) done();
+    if(t>11000) done();
+  },80);
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#262421">
 <title>Curious Monkey Media Montreal | Digital Marketing Agency | Agence de marketing numérique à Montréal</title>
@@ -183,11 +202,6 @@
   .cmm-bar i { position: absolute; inset: 0; transform-origin: 0 50%; transform: scaleX(0); border-radius: 999px; background: linear-gradient(90deg,#B8860B 0%,#D9A81C 60%,#FFE08A 100%); box-shadow: 0 0 12px rgba(217,168,28,0.7); }
   [data-intro-logo].cmm-vanish { animation: cmm-vanish .75s cubic-bezier(.6,0,.2,1) forwards !important; }
   [data-intro-barwrap] { transition: opacity .35s ease; }
-  /* Loader: always cover the whole screen (incl. under iOS Safari's bars) and keep the logo inside it */
-  [data-intro] { top: -25vh !important; bottom: -25vh !important; left: 0 !important; right: 0 !important; width: auto !important; height: auto !important; padding: 25vh 0 !important; box-sizing: border-box !important; overflow: hidden !important; }
-  [data-intro-logo] { width: min(1120px, calc(100% - 48px)) !important; max-width: 100% !important; }
-  [data-intro-logo] .cmm-logo-wrap, [data-intro-logo] img { width: 100% !important; max-width: 100% !important; }
-  [data-intro-barwrap] { max-width: calc(100% - 64px) !important; }
   @keyframes cmm-vanish {
     0%   { clip-path: inset(0 0 0 0); transform: scale(1.05) translateX(0); filter: blur(0); opacity: 1; }
     100% { clip-path: inset(0 0 0 100%); transform: scale(1.05) translateX(6%); filter: blur(6px); opacity: 0; }
