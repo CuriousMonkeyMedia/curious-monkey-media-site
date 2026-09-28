@@ -202,6 +202,11 @@
   .cmm-bar i { position: absolute; inset: 0; transform-origin: 0 50%; transform: scaleX(0); border-radius: 999px; background: linear-gradient(90deg,#B8860B 0%,#D9A81C 60%,#FFE08A 100%); box-shadow: 0 0 12px rgba(217,168,28,0.7); }
   [data-intro-logo].cmm-vanish { animation: cmm-vanish .75s cubic-bezier(.6,0,.2,1) forwards !important; }
   [data-intro-barwrap] { transition: opacity .35s ease; }
+  /* Loader: always cover the whole screen (incl. under iOS Safari's bars) and keep the logo inside it */
+  [data-intro] { top: -25vh !important; bottom: -25vh !important; left: 0 !important; right: 0 !important; width: auto !important; height: auto !important; padding: 25vh 0 !important; box-sizing: border-box !important; overflow: hidden !important; }
+  [data-intro-logo] { width: min(1120px, calc(100% - 48px)) !important; max-width: 100% !important; }
+  [data-intro-logo] .cmm-logo-wrap, [data-intro-logo] img { width: 100% !important; max-width: 100% !important; }
+  [data-intro-barwrap] { max-width: calc(100% - 64px) !important; }
   @keyframes cmm-vanish {
     0%   { clip-path: inset(0 0 0 0); transform: scale(1.05) translateX(0); filter: blur(0); opacity: 1; }
     100% { clip-path: inset(0 0 0 100%); transform: scale(1.05) translateX(6%); filter: blur(6px); opacity: 0; }
