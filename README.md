@@ -51,7 +51,7 @@ Open this folder (or the GitHub repo) in Claude Code and give it this README. Us
 
 - Contact email: `hello@curious-monkeymedia.ca`
 - Booking link: https://calendar.app.google/TDFeHMnXmwJy3zsY6
-- Hours: Mon–Thu 9 AM – 6 PM, Fri 9 AM – 3 PM, Sunday by appointment (Montreal time)
+- Hours: Mon–Thu 9 AM – 5 PM, Fri 9 AM – 3 PM, Sun 10 AM – 1 PM (Montreal time)
 - Brand colours: ink `#0B0B0B`, header `#262421`, gold `#D9A81C` (hover `#E8BC3A`), text `#F2F0EB`, muted `#B9B4A8`
 - Fonts: Outfit (headings), Archivo (UI), DM Sans (body), DM Mono (labels), all from Google Fonts
 - Background video wall shows only on the About page and is always muted. Our work videos keep sound and controls.
