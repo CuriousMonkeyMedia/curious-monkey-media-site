@@ -195,7 +195,7 @@
   .cmm-logo-shine { position: absolute; inset: 0; pointer-events: none;
     background: linear-gradient(100deg, rgba(255,255,255,0) 38%, rgba(255,246,214,0.95) 50%, rgba(255,255,255,0) 62%);
     background-size: 260% 100%; background-repeat: no-repeat;
-    -webkit-mask-image: url(assets/lockup-hd.png); mask-image: url(assets/lockup-hd.png);
+    -webkit-mask-image: url(assets/lockup.svg); mask-image: url(assets/lockup.svg);
     -webkit-mask-size: 100% 100%; mask-size: 100% 100%;
     animation: cmm-shine 1.2s ease-in-out .9s infinite alternate; }
   .cmm-bar { position: relative; width: 100%; height: 6px; border-radius: 999px; background: #2A2723; overflow: hidden; }
@@ -260,47 +260,47 @@
   <sc-if value="{{ showBg }}" hint-placeholder-val="{{ true }}">
   <div data-backdrop="" aria-hidden="true" style="position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;display:flex;flex-direction:column;justify-content:center;gap:16px;opacity:{{ bgOpacity }};transition:opacity .6s ease">
     <div data-bgrow="" data-dir="1" style="display:flex;gap:16px;width:max-content;will-change:transform;animation:cmm-marq-l 84s linear infinite">
-      <video src="assets/pg-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/pg-01.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-01.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
       <img src="assets/pg-01.jpg" alt="" style="flex:0 0 auto;width:200px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;display:block">
-      <video src="assets/adi-02.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-03.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/pg-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-02.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-03.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/pg-01.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-01.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
       <img src="assets/pg-01.jpg" alt="" style="flex:0 0 auto;width:200px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;display:block">
-      <video src="assets/adi-02.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-03.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-02.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-03.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:200px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
     </div>
     <div data-bgrow="" data-dir="-1" style="display:flex;gap:16px;width:max-content;will-change:transform;animation:cmm-marq-r 104s linear infinite">
-      <video src="assets/adi-04.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:contain;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-05.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-04.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:contain;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-05.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
       <img src="assets/pg-02.jpg" alt="" style="flex:0 0 auto;width:210px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;display:block">
-      <video src="assets/adi-06.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-07.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-04.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:contain;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-05.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-06.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-07.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-04.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:contain;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-05.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
       <img src="assets/pg-02.jpg" alt="" style="flex:0 0 auto;width:210px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;display:block">
-      <video src="assets/adi-06.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-07.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-06.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-07.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:210px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
     </div>
     <div data-bgrow="" data-dir="1" style="display:flex;gap:16px;width:max-content;will-change:transform;animation:cmm-marq-l 126s linear infinite">
-      <video src="assets/adi-08.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-09.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-08.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-09.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
       <img src="assets/pg-01.jpg" alt="" style="flex:0 0 auto;width:190px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;display:block">
-      <video src="assets/adi-10.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/pg-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-08.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/adi-09.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-10.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/pg-01.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-08.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-09.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
       <img src="assets/pg-01.jpg" alt="" style="flex:0 0 auto;width:190px;aspect-ratio:4/5;object-fit:cover;border-radius:6px;display:block">
-      <video src="assets/adi-10.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
-      <video src="assets/pg-01.mp4" autoPlay="{{ true }}" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="metadata" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/adi-10.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
+      <video src="assets/pg-01.mp4" muted="{{ true }}" loop="{{ true }}" playsInline="{{ true }}" preload="none" style="flex:0 0 auto;width:190px;aspect-ratio:9/16;object-fit:cover;border-radius:6px;display:block;background:#141310"></video>
     </div>
     <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%,rgba(11,11,11,0.05) 0%,rgba(11,11,11,0.15) 60%,rgba(11,11,11,0.45) 96%)"></div>
   </div>
   </sc-if>
 
   <div data-intro="" aria-hidden="true" style="position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:90;background:#0B0B0B;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:34px;pointer-events:none;transition:opacity .6s ease,transform .7s cubic-bezier(.4,0,.2,1),filter .6s ease">
-    <div data-intro-logo="" style="animation:cmm-intro-grow 5.6s ease-out both"><div class="cmm-logo-wrap"><img src="assets/lockup-hd.png" alt="" style="width:min(1120px,90vw);height:auto;display:block;animation:cmm-intro-in .9s cubic-bezier(.2,.8,.3,1) both"><div class="cmm-logo-shine"></div></div></div>
+    <div data-intro-logo="" style="animation:cmm-intro-grow 5.6s ease-out both"><div class="cmm-logo-wrap"><img src="assets/lockup.svg" alt="" decoding="sync" style="width:min(1120px,90vw);height:auto;display:block;animation:cmm-intro-in .9s cubic-bezier(.2,.8,.3,1) both"><div class="cmm-logo-shine"></div></div></div>
     <div data-intro-barwrap="" style="width:min(560px,78vw)">
       <div class="cmm-bar"><i data-intro-fill=""></i></div>
     </div>
@@ -818,7 +818,7 @@
   </footer>
 
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props="{&quot;showBackdrop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;backdropIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.35,&quot;min&quot;:0.05,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
+<script type="text/x-dc" data-dc-script data-props="{&quot;showBackdrop&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Background&quot;},&quot;backdropIntensity&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:0.2,&quot;min&quot;:0.05,&quot;max&quot;:1,&quot;step&quot;:0.05,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Background&quot;}}">
 class Component extends DCLogic {
   state = { page: "about", open: -1, sent: false, picked: [], cycle: 0, svc: 0, lang: null, askLang: false };
 
@@ -922,7 +922,17 @@ class Component extends DCLogic {
     this.setState({ lang: saved || ((navigator.language || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en"), askLang: false });
     this.ticker = setInterval(() => this.sweep(), 700);
     this.bgRows = Array.prototype.slice.call(this.root.querySelectorAll("[data-bgrow]"));
-    const kick = () => this.root.querySelectorAll("[data-backdrop] video").forEach(v => { v.muted = true; v.volume = 0; v.defaultMuted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+    const onScreen = v => { const r = v.getBoundingClientRect(); return r.right > 0 && r.left < window.innerWidth && r.bottom > 0 && r.top < window.innerHeight; };
+    const playBg = v => { v.muted = true; v.volume = 0; v.defaultMuted = true; if (v.preload !== "auto") v.preload = "auto"; const p = v.play(); if (p && p.catch) p.catch(() => {}); };
+    if ("IntersectionObserver" in window) {
+      this.bgio = new IntersectionObserver(entries => {
+        entries.forEach(e => { if (e.isIntersecting) { if (!document.hidden) playBg(e.target); } else if (!e.target.paused) e.target.pause(); });
+      }, { rootMargin: "0px 120px" });
+    }
+    const kick = () => this.root.querySelectorAll("[data-backdrop] video").forEach(v => {
+      if (this.bgio && !v.__cmmBgWatch) { v.__cmmBgWatch = true; this.bgio.observe(v); }
+      if (onScreen(v)) playBg(v); else if (!v.paused) v.pause();
+    });
     kick();
     setTimeout(kick, 600);
     this.kickBg = kick;
@@ -943,7 +953,8 @@ class Component extends DCLogic {
         this.visPaused = Array.prototype.filter.call(document.querySelectorAll("video"), v => !v.paused);
         this.visPaused.forEach(v => v.pause());
       } else if (this.visPaused) {
-        this.visPaused.forEach(v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+        this.visPaused.forEach(v => { if (v.closest("[data-backdrop]") && this.kickBg) return; const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+        if (this.kickBg) this.kickBg();
         this.visPaused = null;
       }
     };
@@ -1023,7 +1034,7 @@ class Component extends DCLogic {
         while (row.children.length < need) {
           row.__cmmBase.forEach(n => {
             const c = n.cloneNode(true);
-            if (c.tagName === "VIDEO") { c.muted = true; c.defaultMuted = true; c.setAttribute("muted", ""); c.autoplay = true; c.loop = true; c.playsInline = true; }
+            if (c.tagName === "VIDEO") { c.muted = true; c.defaultMuted = true; c.setAttribute("muted", ""); c.autoplay = false; c.removeAttribute("autoplay"); c.preload = "none"; c.loop = true; c.playsInline = true; }
             row.appendChild(c);
           });
         }
@@ -1098,6 +1109,7 @@ class Component extends DCLogic {
     window.removeEventListener("resize", this.onScroll);
     if (this.io) this.io.disconnect();
     if (this.wio) this.wio.disconnect();
+    if (this.bgio) this.bgio.disconnect();
     if (this.onVis) document.removeEventListener("visibilitychange", this.onVis);
     if (this.mo) this.mo.disconnect();
     clearInterval(this.ticker);
@@ -1286,7 +1298,7 @@ class Component extends DCLogic {
       frFg: this.state.lang === "fr" ? "#0B0B0B" : "#B9B4A8",
       pickEn: () => this.setLang("en"),
       pickFr: () => this.setLang("fr"),
-      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 0.35)),
+      bgOpacity: String(this.props.showBackdrop === false ? 0 : (this.props.backdropIntensity ?? 0.2)),
       showBg: this.props.showBackdrop !== false && (p === "about" || p === "home"),
       nav: this.pages.map(t => ({
         label: t.label,
