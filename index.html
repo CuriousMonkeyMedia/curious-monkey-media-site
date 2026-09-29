@@ -621,12 +621,12 @@
             </div>
           </div>
 
-          <div data-rail="{{ c.id }}" style="display:flex;gap:14px;margin-top:12px;overflow-x:auto;scroll-behavior:smooth;padding-bottom:6px">
+          <div data-rail="{{ c.id }}" style="display:flex;gap:14px;margin-top:12px;overflow-x:auto;scroll-behavior:smooth;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;padding-bottom:6px">
             <sc-for list="{{ c.items }}" as="m" hint-placeholder-count="4">
-              <div style="flex:0 0 auto;width:320px">
+              <div style="flex:0 0 auto;width:320px;scroll-snap-align:start">
                 <sc-if value="{{ m.isVideo }}" hint-placeholder-val="{{ false }}">
                   <div style="border:1px solid #1C1A16;border-radius:4px;overflow:hidden;background:#000000;height:560px">
-                    <video src="{{ m.srcReady }}" title="{{ m.label }}" controls="{{ true }}" playsInline="{{ true }}" loop="{{ true }}" muted="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:{{ m.fit }};display:block;background:#000000"></video>
+                    <video data-work-video="" src="{{ m.srcReady }}" title="{{ m.label }}" controls="{{ true }}" disablePictureInPicture="{{ true }}" playsInline="{{ true }}" loop="{{ true }}" muted="{{ true }}" preload="metadata" style="width:100%;height:100%;object-fit:{{ m.fit }};display:block;background:#000000"></video>
                   </div>
                 </sc-if>
                 <sc-if value="{{ m.isImage }}" hint-placeholder-val="{{ false }}">
@@ -930,11 +930,25 @@ class Component extends DCLogic {
     this.guardAudio = e => {
       const v = e.target;
       if (!v || v.tagName !== "VIDEO") return;
-      if (!v.closest('[data-screen-label="Work"]')) { v.muted = true; v.defaultMuted = true; v.volume = 0; }
+      if (!v.closest('[data-screen-label="Work"]')) { v.muted = true; v.defaultMuted = true; v.volume = 0; return; }
+      if (!v.muted && !v.paused) {
+        this.root.querySelectorAll("[data-work-video]").forEach(o => { if (o !== v) { if (!o.muted) o.muted = true; if (!o.paused && o.__cmmUser) o.pause(); } });
+      }
     };
     document.addEventListener("play", this.guardAudio, true);
     document.addEventListener("playing", this.guardAudio, true);
     document.addEventListener("volumechange", this.guardAudio, true);
+    this.onVis = () => {
+      if (document.hidden) {
+        this.visPaused = Array.prototype.filter.call(document.querySelectorAll("video"), v => !v.paused);
+        this.visPaused.forEach(v => v.pause());
+      } else if (this.visPaused) {
+        this.visPaused.forEach(v => { const p = v.play(); if (p && p.catch) p.catch(() => {}); });
+        this.visPaused = null;
+      }
+    };
+    document.addEventListener("visibilitychange", this.onVis);
+    this.setupWorkVideos();
     this.fitSites = () => {
       if (!this.root) return;
       this.root.querySelectorAll("[data-site-view]").forEach(v => {
@@ -1083,6 +1097,8 @@ class Component extends DCLogic {
     if (this.shuffleBg) window.removeEventListener("scroll", this.shuffleBg);
     window.removeEventListener("resize", this.onScroll);
     if (this.io) this.io.disconnect();
+    if (this.wio) this.wio.disconnect();
+    if (this.onVis) document.removeEventListener("visibilitychange", this.onVis);
     if (this.mo) this.mo.disconnect();
     clearInterval(this.ticker);
     clearTimeout(this.introAuto);
@@ -1095,7 +1111,7 @@ class Component extends DCLogic {
     }
   }
 
-  componentDidUpdate() { this.setupReveals(); this.sweep(); this.applyLang(); if (this.slideScroll) requestAnimationFrame(this.slideScroll); if (this.fitSites) requestAnimationFrame(this.fitSites); if (this.kickBg) requestAnimationFrame(this.kickBg); }
+  componentDidUpdate() { this.setupReveals(); this.setupWorkVideos(); this.sweep(); this.applyLang(); if (this.slideScroll) requestAnimationFrame(this.slideScroll); if (this.fitSites) requestAnimationFrame(this.fitSites); if (this.kickBg) requestAnimationFrame(this.kickBg); }
 
   scrollRail(id, dir) {
     const rail = this.root && this.root.querySelector('[data-rail="' + id + '"]');
@@ -1135,6 +1151,29 @@ class Component extends DCLogic {
     const h = window.innerHeight || 800;
     this.root.querySelectorAll("[data-reveal]:not([data-shown])").forEach(el => {
       if (el.getBoundingClientRect().top < h * 0.92) this.show(el);
+    });
+  }
+
+  setupWorkVideos() {
+    if (!this.root || !("IntersectionObserver" in window)) return;
+    if (!this.wio) {
+      this.wio = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          const v = e.target;
+          if (e.isIntersecting && e.intersectionRatio >= 0.6) {
+            if (v.__cmmUser || document.hidden) return;
+            v.muted = true;
+            const p = v.play(); if (p && p.catch) p.catch(() => {});
+          } else if (!v.paused) {
+            v.pause();
+          }
+        });
+      }, { threshold: [0, 0.6] });
+    }
+    this.root.querySelectorAll("[data-work-video]:not([data-watched])").forEach(v => {
+      v.setAttribute("data-watched", "");
+      v.addEventListener("pointerdown", () => { v.__cmmUser = true; }, { passive: true });
+      this.wio.observe(v);
     });
   }
 
@@ -1306,7 +1345,7 @@ class Component extends DCLogic {
         hasMedia: (c.videos || []).length + (c.images || []).length + (c.posts || []).length > 0,
         items: (c.videos || []).map((v, n) => ({
           isVideo: true, isImage: false, isEmbed: false, isSlot: false,
-          srcReady: "assets/" + v + ".mp4",
+          srcReady: "assets/" + v + ".mp4#t=0.001",
           fit: v === "adi-04" ? "contain" : "cover",
           label: c.name + " — clip " + (n + 1)
         })).concat((c.images || []).map((f, n) => ({
