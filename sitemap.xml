@@ -64,4 +64,16 @@
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/marketing-agency-west-island/"/>
     <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/agence-marketing-ouest-de-lile/"/>
   </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/video-production-montreal/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/video-production-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/production-video-montreal/"/>
+  </url>
+  <url>
+    <loc>https://curious-monkeymedia.ca/production-video-montreal/</loc>
+    <lastmod>2026-09-29</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://curious-monkeymedia.ca/video-production-montreal/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://curious-monkeymedia.ca/production-video-montreal/"/>
+  </url>
 </urlset>

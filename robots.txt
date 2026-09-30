@@ -1,4 +1,43 @@
+# Curious Monkey Media: all search engines and AI assistants are welcome.
+
 User-agent: *
+Allow: /
+
+# OpenAI (ChatGPT search, ChatGPT browsing, model training)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+# Anthropic (Claude search, Claude browsing, model training)
+User-agent: Claude-SearchBot
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google Gemini / AI Overviews, Apple Intelligence, Microsoft Copilot (Bing)
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Bingbot
 Allow: /
 
 Sitemap: https://curious-monkeymedia.ca/sitemap.xml
