@@ -433,9 +433,9 @@
         <p data-slide="" style="margin:14px 0 0;color:#B9B4A8;font-size:17px;line-height:1.6;max-width:46ch;text-wrap:pretty">Social media, Meta ads and websites each come in three sizes. Mix them, start small, and move up only when it makes sense.</p>
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:26px">
           <sc-for list="{{ trials }}" as="t" hint-placeholder-count="3">
-            <div data-slide="" style="border:1px solid #1C1A16;border-radius:4px;background:#100F0B;padding:22px 20px">
-              <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:18px;letter-spacing:-0.015em">{{ t.title }}</div>
-              <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.12em;color:#D9A81C;margin-top:7px">{{ t.terms }}</div>
+            <div data-slide="" style="border:1px solid {{ t.edge }};border-top:4px solid {{ t.color }};border-radius:4px;background:{{ t.tint }};padding:22px 20px">
+              <div style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:20px;letter-spacing:-0.015em;color:{{ t.color }}">{{ t.title }}</div>
+              <div style="font-family:'DM Mono',monospace;font-size:10.5px;letter-spacing:0.12em;color:{{ t.color }};opacity:.85;margin-top:7px">{{ t.terms }}</div>
               <p style="margin:12px 0 0;color:#B9B4A8;font-size:15.5px;line-height:1.6;text-wrap:pretty">{{ t.blurb }}</p>
             </div>
           </sc-for>
@@ -518,7 +518,6 @@
           <a href="https://calendar.app.google/TDFeHMnXmwJy3zsY6" target="_blank" rel="noopener" data-cta="" style="display:inline-flex;align-items:center;gap:10px;font-family:'Archivo',sans-serif;background:#D9A81C;color:#0B0B0B;font-weight:600;font-size:16px;padding:15px 24px;border-radius:3px;text-decoration:none;box-shadow:0 8px 24px rgba(217,168,28,0.25);transition:background .18s ease" style-hover="background:#E8BC3A">Book a free consultation <span>→</span></a>
           <button type="button" onClick="{{ goServices }}" style="all:unset;cursor:pointer;font-family:'Archivo',sans-serif;border:1px solid #3A3630;color:#F2F0EB;font-weight:500;font-size:16px;padding:14px 22px;border-radius:3px;transition:border-color .18s ease" style-hover="border-color:#D9A81C">See our services</button>
         </div>
-        <div style="margin-top:12px;font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:0.08em;color:#B9B4A8">GOOGLE MEET OR PHONE</div>
       </div>
       <h2 data-slide="" style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:21px;letter-spacing:-0.015em;margin:34px 0 0;padding-top:30px;border-top:1px solid #2A2621">Why we're <span style="color:#D9A81C;text-transform:uppercase;letter-spacing:0.01em">different</span></h2>
       <p data-slide="" style="margin:16px 0 0;color:#F2F0EB;font-size:16px;line-height:1.7;max-width:72ch;text-wrap:pretty">Most agencies start with a package. Curious Monkey Media starts with a conversation.</p>
@@ -713,7 +712,6 @@
         <div style="font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C9C3B6">Contact</div>
         <h1 style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:clamp(28px,3.8vw,44px);line-height:1.07;letter-spacing:-0.025em;margin:14px 0 0;max-width:18ch">Tell us <span style="color:#D9A81C">what isn't working</span></h1>
         <a href="https://calendar.app.google/TDFeHMnXmwJy3zsY6" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;font-family:'Archivo',sans-serif;background:#D9A81C;color:#0B0B0B;font-weight:600;font-size:15px;padding:13px 20px;border-radius:3px;transition:background .18s ease" style-hover="background:#E8BC3A">Book a free consultation <span>→</span></a>
-        <div style="margin-top:12px;font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:0.08em;color:#B9B4A8">GOOGLE MEET OR PHONE</div>
         <div style="margin-top:26px;border-top:1px solid #1C1A16">
           <a href="mailto:hello@curious-monkeymedia.ca?subject=Enquiry%20via%20Curious%20Monkey%20Media" style="display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #1C1A16;padding:15px 0">
             <span><span style="display:block;font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:0.12em;color:#B9B4A8;margin-bottom:5px">EMAIL</span>hello@curious-monkeymedia.ca</span><span style="color:#D9A81C">→</span>
@@ -892,9 +890,9 @@ class Component extends DCLogic {
   ];
 
   trialData = [
-    { title: "Monkey", terms: "START SMALL", blurb: "The essentials, done well. For example: 2 reels and 4 carousels a month, a first ad campaign, or a one page website." },
-    { title: "Ape", terms: "GROW STEADILY", blurb: "More content and more reach, with strategy built in. For example: 4 reels, 6 carousels and Stories every month, retargeting ads, or a website of up to 5 pages." },
-    { title: "Gorilla", terms: "GO ALL IN", blurb: "A full presence that works for you. For example: 6 reels, 8 carousels, Stories and DM automation, three or more ad campaigns with lead forms, or an 8 to 12 page website with a blog." }
+    { title: "Monkey", color: "#F5D570", tint: "rgba(245,213,112,0.07)", edge: "rgba(245,213,112,0.35)", terms: "START SMALL", blurb: "The essentials, done well. For example: 2 reels and 4 carousels a month, a first ad campaign, or a one page website." },
+    { title: "Ape", color: "#E8913A", tint: "rgba(232,145,58,0.08)", edge: "rgba(232,145,58,0.38)", terms: "GROW STEADILY", blurb: "More content and more reach, with strategy built in. For example: 4 reels, 6 carousels and Stories every month, retargeting ads, or a website of up to 5 pages." },
+    { title: "Gorilla", color: "#D0583E", tint: "rgba(208,88,62,0.09)", edge: "rgba(208,88,62,0.40)", terms: "GO ALL IN", blurb: "A full presence that works for you. For example: 6 reels, 8 carousels, Stories and DM automation, three or more ad campaigns with lead forms, or an 8 to 12 page website with a blog." }
   ];
 
   faqData = [
