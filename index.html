@@ -936,14 +936,58 @@ class Component extends DCLogic {
     let saved = null;
     try { saved = window.localStorage.getItem("cmm-lang"); } catch (e) {}
     this.setState({ lang: saved || ((navigator.language || "").toLowerCase().indexOf("fr") === 0 ? "fr" : "en"), askLang: false });
-    this.ticker = setInterval(() => this.sweep(), 700);
+    // Safari won't start videos while the intro hides the page, and never retries on its own:
+    // keep nudging any loaded background clip that is sitting still.
+    this.keepBg = () => {
+      if (!this.root || document.hidden) return;
+      this.root.querySelectorAll("[data-backdrop] video").forEach(v => {
+        if (v.paused && v.getAttribute("src") && v.readyState >= 2) { v.muted = true; const p = v.play(); if (p && p.catch) p.catch(() => {}); }
+      });
+    };
+    this.ticker = setInterval(() => { this.sweep(); this.keepBg(); }, 700);
     // Videos carry their file in data-src so the raw page template never starts (then cancels) downloads;
     // the real src is only set on the videos actually shown.
+    // Background wall: each clip is downloaded ONCE (fetch -> in-memory copy) and shared by every tile showing it.
+    // Pointing many tiles at the same file URL makes browsers queue, cancel and retry them, which made the wall slow.
+    this.bgBlobs = {};
+    this.bgClip = u => {
+      if (this.bgBlobs[u]) return this.bgBlobs[u];
+      const done = src => {
+        this.bgBlobs[u].src = src;
+        if (!this.root) return;
+        this.root.querySelectorAll("[data-backdrop] video").forEach(v => {
+          if (v.getAttribute("data-src") !== u || v.getAttribute("src") === src) return;
+          v.muted = true; v.defaultMuted = true;
+          this.bgFallback(v, u);
+          v.setAttribute("src", src);
+          const p = v.play(); if (p && p.catch) p.catch(() => {});
+        });
+      };
+      this.bgBlobs[u] = { src: null };
+      if (window.fetch && window.URL && URL.createObjectURL) {
+        fetch(u).then(r => { if (!r.ok) throw new Error(r.status); return r.blob(); })
+          .then(b => done(URL.createObjectURL(b.type ? b : new Blob([b], { type: "video/mp4" }))))
+          .catch(() => done(u));
+      } else done(u);
+      return this.bgBlobs[u];
+    };
+    // If a browser can't play the in-memory copy, that tile falls back to the normal file
+    this.bgFallback = (v, u) => {
+      if (v.cmmFb) return; v.cmmFb = true;
+      v.addEventListener("error", () => { if ((v.getAttribute("src") || "").indexOf("blob:") === 0) { v.setAttribute("src", u); const p = v.play(); if (p && p.catch) p.catch(() => {}); } });
+    };
     this.hydrateVideos = () => {
       if (!this.root) return;
       this.root.querySelectorAll("video[data-src]").forEach(v => {
         const u = v.getAttribute("data-src");
-        if (u && u.indexOf("{{") < 0 && v.getAttribute("src") !== u) v.setAttribute("src", u);
+        if (!u || u.indexOf("{{") >= 0) return;
+        if (v.closest("[data-backdrop]")) {
+          const c = this.bgClip(u);
+          if (!v.cmmFb && (v.getAttribute("src") || "").indexOf("blob:") === 0) this.bgFallback(v, u);
+          if (c.src && v.getAttribute("src") !== c.src && !(v.cmmFb && v.getAttribute("src") === u)) { v.muted = true; v.defaultMuted = true; this.bgFallback(v, u); v.setAttribute("src", c.src); }
+          return;
+        }
+        if (v.getAttribute("src") !== u) v.setAttribute("src", u);
       });
     };
     this.hydrateVideos();
@@ -1132,6 +1176,7 @@ class Component extends DCLogic {
           });
         }
       });
+      this.hydrateVideos();
       if (this.kickBg) this.kickBg();
       this.shuffleBg();
     };
@@ -1192,7 +1237,7 @@ class Component extends DCLogic {
       const target = Math.min(0.92, el2 / minDur * 0.92);
       shown += (target - shown) * 0.08;
       if (fill) fill.style.transform = "scaleX(" + shown.toFixed(4) + ")";
-      if ((loaded && el2 >= minDur && bgReady()) || el2 >= maxDur) { finish(); return; }
+      if ((loaded && el2 >= minDur && (el2 >= minDur + 1200 || bgReady())) || el2 >= maxDur) { finish(); return; }
       requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
