@@ -391,7 +391,7 @@
         </sc-for>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px">
+      <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;overflow-anchor:none">
         <sc-for list="{{ services }}" as="svc" hint-placeholder-count="8">
           <div data-svc-card="" data-svc-id="{{ svc.anchor }}" style="border:1px solid #1C1A16;border-radius:4px;background:#100F0B;padding:30px 28px">
             <div style="display:flex;align-items:center;gap:14px">
@@ -1199,14 +1199,13 @@ class Component extends DCLogic {
     if (targets.length) setTimeout(finish, 270); else finish();
   }
 
-  playSvc() {
+  playSvc(y) {
     const card = this.root && this.root.querySelector("[data-svc-card]");
     if (!card) return;
     card.style.animation = "none";
     void card.offsetWidth;
     card.style.animation = "cmm-svc-in .6s cubic-bezier(.22,.9,.28,1) both";
-    const r = card.getBoundingClientRect();
-    if (r.top < 90 || r.top > window.innerHeight * 0.6) window.scrollTo({ top: window.scrollY + r.top - 140, behavior: "smooth" });
+    if (y != null && window.scrollY !== y) window.scrollTo(0, y);
   }
 
   playStage(dir) {
@@ -1263,14 +1262,14 @@ class Component extends DCLogic {
           border: on ? "#D9A81C" : "#302C24",
           fg: on ? "#0B0B0B" : "#B9B4A8",
           pick: () => {
-            this.setState({ svc: i }, () => requestAnimationFrame(() => this.playSvc()));
+            const y = window.scrollY; this.setState({ svc: i }, () => this.playSvc(y));
           }
         };
       }),
       svcShift: "translateX(-" + this.state.svc * 100 + "%)",
       svcCounter: String(this.state.svc + 1).padStart(2, "0") + " / " + String(this.serviceData.length).padStart(2, "0"),
-      svcPrev: () => this.setState(st => ({ svc: (st.svc - 1 + this.serviceData.length) % this.serviceData.length }), () => this.playSvc()),
-      svcNext: () => this.setState(st => ({ svc: (st.svc + 1) % this.serviceData.length }), () => this.playSvc()),
+      svcPrev: () => { const y = window.scrollY; this.setState(st => ({ svc: (st.svc - 1 + this.serviceData.length) % this.serviceData.length }), () => this.playSvc(y)); },
+      svcNext: () => { const y = window.scrollY; this.setState(st => ({ svc: (st.svc + 1) % this.serviceData.length }), () => this.playSvc(y)); },
       active: this.stepData[this.state.cycle] || this.stepData[0],
       cycleOffset: String(100 - (this.state.cycle + 1) * 25),
       caretX: ["50%", "78%", "50%", "22%"][this.state.cycle] || "50%",
