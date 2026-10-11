@@ -951,41 +951,55 @@ class Component extends DCLogic {
     document.addEventListener("play", this.guardAudio, true);
     document.addEventListener("playing", this.guardAudio, true);
     document.addEventListener("volumechange", this.guardAudio, true);
-    // Our work: the clip in view plays with sound, every other clip is paused and silent
-    this.workPlay = () => {
+    // Our work: the clip in view plays, every other clip is paused and silent.
+    // Sound comes on after the visitor's first tap or click (iPhones and most browsers refuse sound before one).
+    // A tap on a clip always starts it, even in iPhone Low Power Mode.
+    this.soundBlocked = true;
+    this.workQuiet = v => { v.muted = true; const q = v.play(); if (q && q.catch) q.catch(() => {}); };
+    this.workPlay = inTap => {
       if (!this.root) return;
       const vh = window.innerHeight || 800;
-      let best = null, bestD = Infinity;
-      this.root.querySelectorAll("[data-rail]").forEach(rail => {
-        const r = rail.getBoundingClientRect();
-        const seen = Math.min(r.bottom, vh) - Math.max(r.top, 0);
-        if (seen < r.height * 0.5) return;
-        const d = Math.abs((r.top + r.bottom) / 2 - vh / 2);
-        if (d < bestD) { bestD = d; best = rail; }
-      });
       let active = null;
-      if (best) {
-        const items = Array.prototype.slice.call(best.querySelectorAll("[data-rail-item]"));
-        const left = best.getBoundingClientRect().left;
-        let cur = -1, curD = Infinity;
-        items.forEach((it, i) => { const d = Math.abs(it.getBoundingClientRect().left - left); if (d < curD) { curD = d; cur = i; } });
-        if (cur >= 0) {
-          active = items[cur].querySelector("video");
-          [cur - 1, cur + 1, cur + 2].forEach(i => { const v = items[i] && items[i].querySelector("video"); if (v && v.preload !== "auto") v.preload = "auto"; });
+      const pin = this.workPin && Date.now() < this.workPinUntil && this.root.contains(this.workPin) ? this.workPin : null;
+      if (pin) active = pin;
+      else {
+        let best = null, bestD = Infinity;
+        this.root.querySelectorAll("[data-rail]").forEach(rail => {
+          const r = rail.getBoundingClientRect();
+          const seen = Math.min(r.bottom, vh) - Math.max(r.top, 0);
+          if (seen < r.height * 0.5) return;
+          const d = Math.abs((r.top + r.bottom) / 2 - vh / 2);
+          if (d < bestD) { bestD = d; best = rail; }
+        });
+        if (best) {
+          const items = Array.prototype.slice.call(best.querySelectorAll("[data-rail-item]"));
+          const left = best.getBoundingClientRect().left;
+          let cur = -1, curD = Infinity;
+          items.forEach((it, i) => { const d = Math.abs(it.getBoundingClientRect().left - left); if (d < curD) { curD = d; cur = i; } });
+          if (cur >= 0) {
+            active = items[cur].querySelector("video");
+            [cur - 1, cur + 1, cur + 2].forEach(i => { const v = items[i] && items[i].querySelector("video"); if (v && v.preload !== "auto") v.preload = "auto"; });
+          }
         }
       }
       this.root.querySelectorAll("video[data-work-video]").forEach(v => {
+        if (!v.cmmWired) {
+          v.cmmWired = true;
+          v.addEventListener("play", () => { v.cmmSelfPause = false; });
+          // iPhone pauses a clip it won't let make sound: carry on silently instead of freezing
+          v.addEventListener("pause", () => { if (v === this.workActive && !v.cmmSelfPause && !v.ended) { this.soundBlocked = true; this.workQuiet(v); } });
+        }
         if (v === active) {
           if (this.workActive !== v) { this.workActive = v; try { v.currentTime = 0; } catch (e) {} }
           const loud = !this.soundBlocked;
-          if (v.muted === loud) v.muted = !loud;
-          v.volume = 1;
+          if (loud && v.muted) v.muted = false;
+          if (!loud && !v.muted) v.muted = true;
           if (v.paused) {
             const p = v.play();
-            if (p && p.catch) p.catch(() => { if (!v.muted) { this.soundBlocked = true; v.muted = true; const q = v.play(); if (q && q.catch) q.catch(() => {}); } });
+            if (p && p.catch) p.catch(() => { if (!v.muted) { this.soundBlocked = true; this.workQuiet(v); } });
           }
         } else {
-          if (!v.paused) v.pause();
+          if (!v.paused) { v.cmmSelfPause = true; v.pause(); }
           v.muted = true;
         }
       });
@@ -994,7 +1008,41 @@ class Component extends DCLogic {
     this.workTick = () => { if (this.workRaf) return; this.workRaf = requestAnimationFrame(() => { this.workRaf = 0; this.workPlay(); }); };
     document.addEventListener("scroll", this.workTick, { capture: true, passive: true });
     window.addEventListener("resize", this.workTick);
-    ["pointerdown", "touchend", "keydown"].forEach(t => window.addEventListener(t, () => { this.soundBlocked = false; setTimeout(this.workTick, 0); }, { passive: true }));
+    // The first real tap/click/key unlocks sound for every clip, like on a computer.
+    // iPhone only lets a clip make sound if it was started during a tap, so each clip is started
+    // (and instantly stopped) inside the tap; after that, moving between clips plays sound on its own.
+    this.workUnlock = () => {
+      if (!this.root) return;
+      this.root.querySelectorAll("video[data-work-video]").forEach(v => {
+        if (v.cmmUnlocked || v === this.workActive) return;
+        v.cmmUnlocked = true;
+        const wasMuted = v.muted;
+        v.muted = false;
+        const p = v.play(); if (p && p.catch) p.catch(() => {});
+        v.cmmSelfPause = true; v.pause();
+        v.muted = wasMuted;
+      });
+    };
+    const onTap = e => {
+      if (navigator.userActivation && !navigator.userActivation.isActive) return;
+      this.soundBlocked = false;
+      const item = e.target && e.target.closest && e.target.closest("[data-rail-item]");
+      const v = item && item.querySelector("video[data-work-video]");
+      if (v) {
+        // Tapped clip becomes the one playing
+        this.workPin = v; this.workPinUntil = Date.now() + 1500;
+        const rail = item.closest("[data-rail]");
+        if (rail) rail.scrollLeft += item.getBoundingClientRect().left - rail.getBoundingClientRect().left;
+      }
+      this.workPlay(true);
+      this.workUnlock();
+      // Clips that appear right after this tap (e.g. tapping "Our work" in the menu) still count as tapped
+      setTimeout(() => { this.workPlay(true); this.workUnlock(); }, 120);
+      setTimeout(() => { this.workPlay(true); this.workUnlock(); }, 450);
+    };
+    window.addEventListener("click", onTap, true);
+    window.addEventListener("touchend", onTap, { capture: true, passive: true });
+    window.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") onTap(e); });
     this.fitSites = () => {
       if (!this.root) return;
       this.root.querySelectorAll("[data-site-view]").forEach(v => {
