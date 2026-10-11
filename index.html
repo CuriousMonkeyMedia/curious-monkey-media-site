@@ -71,9 +71,8 @@
   #cmm-menu-btn { display: none; }
   header > div > button img { height: 56px !important; }
   footer img[src*="lockup"] { height: 56px !important; }
-  @media (max-width: 760px) {
-    html { -webkit-text-size-adjust: 100%; }
-
+  /* Phones, phones held sideways and tablets in portrait: logo + menu button instead of a two-row header */
+  @media (max-width: 1023px) {
     /* Header: logo + menu button on one row, links in a drop-down */
     header > div { flex-wrap: nowrap !important; padding: 10px 16px !important; padding-right: 64px !important; min-height: 44px; }
     header > div > button img { height: 46px !important; }
@@ -84,7 +83,7 @@
       flex-direction: column !important; align-items: stretch !important; gap: 0 !important;
       padding: 6px 20px 20px; background: #262421;
       border-bottom: 1px solid #3A3630; box-shadow: 0 18px 30px rgba(0,0,0,0.45);
-      max-height: calc(100vh - 64px); overflow-y: auto;
+      max-height: calc(100vh - 64px); max-height: calc(100dvh - 64px); overflow-y: auto; -webkit-overflow-scrolling: touch;
     }
     html.cmm-menu-open header nav > button:not(:last-child) {
       font-size: 18px !important; padding: 15px 0 !important;
@@ -109,6 +108,11 @@
     html.cmm-menu-open #cmm-menu-btn span:nth-child(2) { opacity: 0; }
     html.cmm-menu-open #cmm-menu-btn span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
     html.cmm-lang-open #cmm-menu-btn { display: none; }
+    html.cmm-menu-open header nav > * { flex-shrink: 0; }
+  }
+
+  @media (max-width: 760px) {
+    html { -webkit-text-size-adjust: 100%; }
 
     /* Page spacing */
     main section { padding-left: 18px !important; padding-right: 18px !important; }
@@ -139,6 +143,11 @@
     [data-screen-label="Contact"] section, main section[style*="minmax(280px,1fr)"], main section[style*="minmax(280px, 1fr)"] { grid-template-columns: 1fr !important; }
 
     footer, footer > div { padding-left: 18px !important; padding-right: 18px !important; }
+  }
+
+  /* Phones held sideways (short screens): keep work videos fully on screen */
+  @media (orientation: landscape) and (max-height: 600px) {
+    [data-rail] > div { width: calc(min(560px, 76vh) * var(--ar)) !important; max-width: 88vw !important; }
   }
 
 </style>
