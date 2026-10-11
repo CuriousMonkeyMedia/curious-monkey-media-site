@@ -6,7 +6,7 @@ Curious Monkey Media is a Montreal and West Island digital marketing agency foun
 
 - Website: https://curious-monkeymedia.ca
 - All links: https://linktr.ee/curiousmonkeymedia
-- Email: hello@curious-monkeymedia.ca
+- Email: daniel@curious-monkeymedia.ca
 
 ---
 
@@ -45,11 +45,11 @@ Open this folder (or the GitHub repo) in Claude Code and give it this README. Us
 - "Deploy this static site to GitHub Pages with the custom domain in CNAME."
 - "Convert index.html into a Vite/React or Astro project while keeping the design pixel-identical." (Optional. The site already works as is.)
 - "Compress the videos in assets/ to under 5 MB each without visible quality loss." (Recommended for faster loading on phones.)
-- "Connect the contact form to a form service (e.g. Formspree) so enquiries arrive at hello@curious-monkeymedia.ca without opening the visitor's email app."
+- "Connect the contact form to a form service (e.g. Formspree) so enquiries arrive at daniel@curious-monkeymedia.ca without opening the visitor's email app."
 
 ## Key details to preserve
 
-- Contact email: `hello@curious-monkeymedia.ca`
+- Contact email: `daniel@curious-monkeymedia.ca`
 - Booking link: https://calendar.app.google/TDFeHMnXmwJy3zsY6
 - Hours: Mon–Thu 9 AM – 5 PM, Fri 9 AM – 3 PM, Sun 10 AM – 1 PM (Montreal time)
 - Brand colours: ink `#0B0B0B`, header `#262421`, gold `#D9A81C` (hover `#E8BC3A`), text `#F2F0EB`, muted `#B9B4A8`
