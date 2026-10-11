@@ -391,9 +391,9 @@
         </sc-for>
       </div>
 
-      <div style="display:flex;flex-direction:column;gap:18px;margin-top:26px;overflow-anchor:none">
+      <div data-svc-stack="" style="display:grid;grid-template-columns:minmax(0,1fr);margin-top:26px;overflow-anchor:none">
         <sc-for list="{{ services }}" as="svc" hint-placeholder-count="8">
-          <div data-svc-card="" data-svc-id="{{ svc.anchor }}" style="border:1px solid #1C1A16;border-radius:4px;background:#100F0B;padding:30px 28px">
+          <div data-svc-card="" data-svc-id="{{ svc.anchor }}" aria-hidden="{{ svc.hidden }}" style="grid-area:1/1;visibility:{{ svc.vis }};border:1px solid #1C1A16;border-radius:4px;background:#100F0B;padding:30px 28px">
             <div style="display:flex;align-items:center;gap:14px">
               <div style="flex:0 0 auto;width:54px;height:54px;border:1.5px solid #4A3F18;border-radius:14px;background:rgba(233,197,87,0.10);display:flex;align-items:center;justify-content:center"><div role="img" aria-label="{{ svc.title }}" style="width:30px;height:30px;background-image:url({{ svc.iconUrl }});background-size:contain;background-position:center;background-repeat:no-repeat"></div></div>
               <div style="font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:0.14em;color:#D9A81C">{{ svc.num }}</div>
@@ -1200,7 +1200,7 @@ class Component extends DCLogic {
   }
 
   playSvc(y) {
-    const card = this.root && this.root.querySelector("[data-svc-card]");
+    const card = this.root && this.root.querySelector('[data-svc-id="s' + this.state.svc + '"]');
     if (!card) return;
     card.style.animation = "none";
     void card.offsetWidth;
@@ -1251,7 +1251,7 @@ class Component extends DCLogic {
       isHome: p === "home", isServices: p === "services", isProcess: p === "process",
       isAbout: p === "about", isWork: p === "work", isContact: p === "contact",
       teasers: this.serviceData.map((s, i) => ({ num: s.num, title: s.title, short: s.short, delay: String((i % 3) * 60) })),
-      services: this.serviceData.map((s, i) => { const m = this.svcPages(i); return { num: s.num, title: s.title, body: s.body, iconUrl: this.svcIcons[i], anchor: "s" + i, isWeb: i === 2, hasMore: false, moreHref: m ? m.href : "", moreLabel: m ? m.label : "" }; }).filter(x => x.anchor === "s" + this.state.svc),
+      services: this.serviceData.map((s, i) => { const m = this.svcPages(i); return { num: s.num, title: s.title, body: s.body, iconUrl: this.svcIcons[i], anchor: "s" + i, isWeb: i === 2, hasMore: false, moreHref: m ? m.href : "", moreLabel: m ? m.label : "", vis: i === this.state.svc ? "visible" : "hidden", hidden: i === this.state.svc ? "false" : "true" }; }),
       svcLinks: [0, "cc", 2, 3].map(i => this.svcPages(i)),
       svcNavLabel: this.state.lang === "fr" ? "Nos services" : "Our services",
       svcTabs: this.serviceData.map((s, i) => {
