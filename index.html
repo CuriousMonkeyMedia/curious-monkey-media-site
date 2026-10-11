@@ -596,8 +596,7 @@
   <div data-screen-label="Work">
     <section style="max-width:var(--cmm-w);margin:0 auto;padding:clamp(44px,5vw,76px) 28px clamp(44px,5vw,72px)">
       <div data-reveal="" style="opacity:0;transform:translateY(8px);transition:opacity .45s ease,transform .45s ease;border-bottom:1px solid #1C1A16;padding-bottom:24px">
-        <div style="font-family:'DM Mono',monospace;font-size:14px;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:#C9C3B6">Work</div>
-        <h1 style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,50px);line-height:1.07;letter-spacing:-0.025em;margin:14px 0 0">Client <span style="color:#D9A81C">work</span></h1>
+        <h1 style="font-family:'Outfit','Archivo',sans-serif;font-weight:700;font-size:clamp(30px,4.2vw,50px);line-height:1.07;letter-spacing:-0.025em;margin:0">Client <span style="color:#D9A81C">work</span></h1>
       </div>
       <sc-for list="{{ clients }}" as="c" hint-placeholder-count="2">
         <div data-reveal="" data-delay="{{ c.delay }}" style="opacity:0;transform:translateY(10px);transition:opacity .45s ease,transform .45s ease;padding:32px 0;border-bottom:1px solid #1C1A16">
@@ -620,8 +619,7 @@
           <p style="margin:14px 0 0;color:#B9B4A8;font-size:16.5px;line-height:1.6;max-width:56ch;text-wrap:pretty">{{ c.blurb }}</p>
 
           <sc-if value="{{ c.hasMedia }}" hint-placeholder-val="{{ true }}">
-          <div style="display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:22px">
-            <div style="font-family:'DM Mono',monospace;font-size:12px;letter-spacing:0.12em;color:#B9B4A8">SELECTED WORK</div>
+          <div style="display:flex;align-items:center;justify-content:flex-end;gap:16px;margin-top:22px">
             <div style="display:flex;gap:8px">
               <button type="button" onClick="{{ c.prev }}" aria-label="Previous" style="all:unset;cursor:pointer;width:34px;height:34px;border:1px solid #302C24;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#F2F0EB;font-size:15px;transition:border-color .18s ease" style-hover="border-color:#D9A81C">←</button>
               <button type="button" onClick="{{ c.next }}" aria-label="Next" style="all:unset;cursor:pointer;width:34px;height:34px;border:1px solid #302C24;border-radius:3px;display:flex;align-items:center;justify-content:center;color:#F2F0EB;font-size:15px;transition:border-color .18s ease" style-hover="border-color:#D9A81C">→</button>
